@@ -1,6 +1,6 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] result = {-1, -1};
+        int[] result = new int[2];
         int left = binarySearch(nums, target, true);
         int right = binarySearch(nums, target, false);
         result[0] = left;
