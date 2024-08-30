@@ -15,11 +15,12 @@ class Solution {
         ListNode odd=head;
         ListNode even=head.next;
         ListNode connection=even;
-       while (even != null && even.next != null) {
-            odd.next = even.next;
-            odd = odd.next;
-            even.next = odd.next;
-            even = even.next;
+        while(even != null && even.next != null)
+        {
+            odd.next=even.next;
+            odd=odd.next;
+            even.next=odd.next;
+            even=even.next;
         }
         odd.next=connection;
         return head;
