@@ -1,24 +1,24 @@
 class Solution {
     public List<List<Integer>> generate(int n) {
-        List<List<Integer>> ans = new ArrayList<>();
+        int ans=1;
+        List<List<Integer>> result =new ArrayList<>();
         for(int i=1;i<=n;i++)
         {
-            ans.add(generateR(i));
+           result.add(genrow(i));
         }
-        return ans;
+        return result;
     }
-    public List<Integer> generateR(int i)
+    public static List<Integer> genrow( int row)
     {
-        int ans= 1;
-        List<Integer> row= new ArrayList<>();
-        row.add(ans);
-        for(int j=1;j<i;j++)
+        int ans=1;
+        List<Integer> res=new ArrayList<>();
+        res.add(ans);
+        for(int i=1;i<row;i++)
         {
-            ans=ans*(i-j);
-            ans=ans/j;
-            row.add(ans);
+            ans=ans*(row-i);
+            ans=ans/i;
+            res.add(ans);
         }
-        return row;
-
+        return res;
     }
 }
