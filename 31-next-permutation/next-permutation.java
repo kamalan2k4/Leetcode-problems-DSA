@@ -1,38 +1,39 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-            int n = nums.length;
-        int i = n - 2;
-
-        // Find the first decreasing element from the end
-        while (i >= 0 && nums[i] >= nums[i + 1]) {
-            i--;
+        int i=nums.length-1;
+        while(i>0 && nums[i-1]>=nums[i])
+        i--;
+        if(i==0)
+        {
+            reverse(0,nums.length-1,nums);
+            return;
         }
+        int j=nums.length-1;
+        while(j>=i && nums[j]<=nums[i-1])
+        j--;
+        swap(i-1,j,nums);
+        reverse(i,nums.length-1,nums);
 
-        if (i >= 0) {
-            // Find the element just larger than nums[i] to swap with
-            int j = n - 1;
-            while (nums[j] <= nums[i]) {
-                j--;
-            }
-            // Swap elements at i and j
-            swap(nums, i, j);
-        }
-        // Reverse the elements from i+1 to end to get the next smallest lexicographic permutation
-        reverse(nums, i + 1, n - 1);
     }
+    public static void reverse(int i,int j, int[] a)
+    {
+        while(i<j)
+        {
+            int t=a[i];
+            a[i]=a[j];
+            a[j]=t;
+            i++;
+            j--;
 
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
-    private void reverse(int[] nums, int start, int end) {
-        while (start < end) {
-            swap(nums, start, end);
-            start++;
-            end--;
         }
     }
+    public static void swap(int i, int j, int[] a)
+        {
+            int t=a[i];
+            a[i]=a[j];
+            a[j]=t;
+
+        }
         
-    }
+    
+}
