@@ -10,26 +10,45 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        
-        ListNode ans = new ListNode(-1);  // create a dummy node
-        ListNode temp = ans;
-        while(list1!=null && list2!=null){ //Merge List
-            
-            if(list1.val <= list2.val) {  // add the next pointer of temp to the smallest value after comparing both lists
-                temp.next = list1;
-                list1=list1.next;
+        ListNode i1=list1;
+        ListNode i2=list2;
+        ListNode dummy= new ListNode();
+        ListNode newhead=dummy;
+        while(i1 !=null && i2!=null)
+        {
+            if(i1.val<=i2.val)
+            {dummy.next=i1;
+            // dummy=i2;
+            i1=i1.next;
             }
-            else{
-                temp.next = list2;
-                list2=list2.next;
+            else
+            {
+                dummy.next=i2;
+                // dummy=i1;
+                i2=i2.next;
+
             }
-            temp= temp.next;
+            dummy=dummy.next;
         }
-        if(list1 != null){  // if any one list is still remaining then point our temp.next pointer to it, so all the values ahead of the list will also be automatically attached.
-            temp.next= list1;
-        }else{
-            temp.next= list2;
+        if(i1!=null)
+        {
+            // while(i1!=null)
+            // {
+                dummy.next=i1;
+                // dummy=i1;
+                // i1=i1.next;
+            // }
         }
-        return ans.next; 
+        else
+        {
+            // while(i2!=null)
+            // {
+                dummy.next=i2;
+                // dummy=i2;
+                // i2=i2.next;
+            // }
+        }
+        return newhead.next;
+
     }
 }
